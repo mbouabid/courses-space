@@ -1,0 +1,15 @@
+
+<td class="col-md-4">{{aCourse.title}}</td>
+<td class="col-md-5">{{aCourse.description}}</td>
+<td class="col-md-1">{{aCourse.level}}</td>
+<td class="col-md-1">
+  <button type="button" class="btn btn-info btn-sm " (click)="select(aCourse)">
+    <span class="glyphicon glyphicon-edit"></span> Edit 
+  </button>
+</td>
+<td class="col-md-1" >
+  <button type="button" class="btn btn-danger btn-sm " (click)="delete(aCourse)">
+    <i class="fa fa-trash"></i> Delete
+  </button>
+ 
+</td>

@@ -1,0 +1,65 @@
+<div class="row">
+  <div class="col col-md-3"></div>
+  <div class="col col-md-6">
+    <form [formGroup]="myForm" (ngSubmit)="submit()">
+      <fieldset>
+        <legend>
+          <h3>Add new course/exercice/workshop</h3>
+        </legend>
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Title</label>
+          <input type="hidden" name="id" formControlName="id" [(ngModel)]="selectedCourse.id">
+          <input type="text" formControlName="title" name="title" class="form-control"
+            [(ngModel)]="selectedCourse.title">
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Description</label>
+          <input type="text" formControlName="description" name="description" class="form-control"
+            [(ngModel)]="selectedCourse.description">
+          <!--[(ngModel)]="course.description"-->
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Level</label>
+          <select name="level" class="form-control" formControlName="level" [(ngModel)]="selectedCourse.level">
+            <option>L1 TI</option>
+            <option>L2 DSI</option>
+            <option>L3 DSI</option>
+            <option>L2 SEM</option>
+            <option>L3 SEM</option>
+            <option></option>
+          </select>
+        </div>
+
+        <div class="form-group" *ngIf="!selected">
+          <label for="exampleFormControlInput1">File</label>
+          <input type="file" formControlName="file" name="fileName" class="form-control"
+            (change)="onFileChange($event)">
+        </div>
+        <div *ngIf="!selected" class="col col-md-6"><input type="submit" value="add" class="btn btn-success"></div>
+        <div *ngIf="selected" class="col col-md-6"><input type="submit" value="update" class="btn btn-success"></div>
+      </fieldset>
+    </form>
+  </div>
+</div>
+<!--courses List-->
+<br>
+<table class="table">
+  <thead>
+    <tr>
+      <th class="col-md-4" scope="col">Title</th>
+      <th class="col-md-5" scope="col">Description</th>
+      <th class="col-md-1" scope="col">Level</th>
+      <th class="col-md-1" scope="col">Update</th>
+      <th class="col-md-1" scope="col">Delete</th>
+    </tr>
+  </thead>
+</table>
+<table class="table table-hover">
+  <tr *ngFor="let course of courses">
+    <app-courses-list [aCourse]="course" (childEvent)=parentEvent($event) (childEvent2)=parentEvent2($event)></app-courses-list>
+  </tr>
+</table>
+  
+    
+ 
+
